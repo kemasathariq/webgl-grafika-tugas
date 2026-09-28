@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tugas 1 Grafika Komputer</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="page-header">
+    <h1>Tugas 1 Grafika Komputer</h1>
+    <p class="subtitle">Duplikasi Gambar Ilustrasi Anak-anak dengan Animasi</p>
+    <p class="status-line">Status: <span id="status-text">DAY</span></p>
+  </header>
+
+  <main class="content">
+    <section class="canvas-panel">
+      <canvas id="glcanvas" width="900" height="580"></canvas>
+    </section>
+
+    <section class="reference-panel">
+      <img src="assets/reference.png" alt="Gambar referensi ilustrasi anak-anak" />
+      <p class="caption">Gambar Referensi</p>
+    </section>
+  </main>
+
+  <footer class="controls">
+    <button id="btn-pause" type="button">Pause</button>
+    <button id="btn-reset" type="button">Reset</button>
+    <span id="time-readout" class="readout">t = 0.0s</span>
+    <span id="light-readout" class="readout">light = 1.00</span>
+    <span class="hint">Space = pause/resume · R = reset</span>
+  </footer>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>
