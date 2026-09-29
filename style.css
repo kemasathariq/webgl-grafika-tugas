@@ -1,0 +1,88 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Judul + gambar ditempatkan di tengah layar */
+body {
+  margin: 0;
+  background: #f1eee7;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #555;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  padding: 16px;
+}
+
+.judul {
+  text-align: center;
+}
+
+.judul h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  color: #333;
+}
+
+.judul p {
+  margin: 2px 0;
+  font-size: 16px;
+}
+
+/* Referensi & hasil WebGL berdampingan */
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.panel {
+  margin: 0;
+  width: 600px; /* 0.75 x 800 */
+}
+
+#referensi,
+#glCanvas {
+  display: block;
+  width: 600px;    /* 0.75 x 800 */
+  height: 395.25px; /* 0.75 x 527 */
+}
+
+figcaption {
+  padding: 4px 0;
+  font-size: 14px;
+  text-align: center;
+}
+/* Tips kontrol keyboard */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px 24px;
+  font-size: 14px;
+}
+
+.controls strong {
+  color: #333;
+}
+
+kbd {
+  display: inline-block;
+  min-width: 24px;
+  padding: 2px 6px;
+  border: 1px solid #bbb;
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  background: #fff;
+  color: #333;
+  font-family: inherit;
+  font-size: 13px;
+  text-align: center;
+}
