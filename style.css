@@ -1,8 +1,13 @@
+/*
+5025241102 Kemas Muhammad Athariq
+5025241134 Gilbran Mahdavikia Raja
+*/
+
 * {
   box-sizing: border-box;
 }
 
-/* Judul + gambar ditempatkan di tengah layar */
+/* Konten di tengah layar */
 body {
   margin: 0;
   background: #f1eee7;
@@ -32,7 +37,7 @@ body {
   font-size: 16px;
 }
 
-/* Referensi & hasil WebGL berdampingan */
+/* Referensi & hasil WebGL berdampingan, skala 0.75x */
 .wrapper {
   display: flex;
   flex-direction: row;
@@ -44,14 +49,14 @@ body {
 
 .panel {
   margin: 0;
-  width: 600px; /* 0.75 x 800 */
+  width: 600px;
 }
 
 #referensi,
 #glCanvas {
   display: block;
-  width: 600px;    /* 0.75 x 800 */
-  height: 395.25px; /* 0.75 x 527 */
+  width: 600px;
+  height: 395.25px;
 }
 
 figcaption {
