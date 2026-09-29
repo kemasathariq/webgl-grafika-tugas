@@ -5,6 +5,7 @@
 
 import { Mat3 } from "./matrix3.js";
 
+// Derajat -> radian (Math.sin/cos memakai radian)
 function degToRad(deg) {
   return (deg * Math.PI) / 180;
 }
@@ -51,6 +52,7 @@ void main() {
 }
 `;
 
+// Compile shader dan tampilkan info log jika gagal
 function createShader(gl, type, source) {
   const shader = gl.createShader(type);
   gl.shaderSource(shader, source);
@@ -64,6 +66,7 @@ function createShader(gl, type, source) {
   return shader;
 }
 
+// Link vertex + fragment shader menjadi satu program
 function createProgram(gl, vertexShader, fragmentShader) {
   const program = gl.createProgram();
   gl.attachShader(program, vertexShader);
@@ -141,6 +144,7 @@ const staticShapes = {
   ], gl.TRIANGLES),
 };
 
+// Warna hex "#rrggbb" -> [r, g, b, a] rentang 0..1
 function hexToRgba(hex) {
   const n = parseInt(hex.slice(1), 16);
   return [(n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255, 1];
@@ -171,6 +175,7 @@ function drawShape(shape, matrix, color) {
   gl.drawArrays(shape.mode, 0, shape.count);
 }
 
+// Kotak: (x, y) = pojok kiri atas, ukuran w x h
 function drawRect(x, y, w, h, color, angle = 0) {
   let m = Mat3.translation(x, y);
   m = Mat3.rotate(m, angle);
@@ -178,18 +183,21 @@ function drawRect(x, y, w, h, color, angle = 0) {
   drawShape(shapes.square, m, color);
 }
 
+// Segitiga sama kaki di dalam kotak (x, y, w, h), puncak di tengah atas
 function drawTriangle(x, y, w, h, color) {
   let m = Mat3.translation(x, y);
   m = Mat3.scale(m, w, h);
   drawShape(shapes.triangle, m, color);
 }
 
+// Lingkaran dengan pusat (cx, cy) dan radius r
 function drawCircle(cx, cy, r, color) {
   let m = Mat3.translation(cx, cy);
   m = Mat3.scale(m, r, r);
   drawShape(shapes.circle, m, color);
 }
 
+// Setengah lingkaran bagian atas (untuk matahari terbit)
 function drawHalfCircle(cx, cy, r, color) {
   let m = Mat3.translation(cx, cy);
   m = Mat3.scale(m, r, r);
@@ -210,6 +218,7 @@ function drawLine(x1, y1, x2, y2, thickness = 3, color = COLOR.ink) {
   drawCircle(x2, y2, thickness / 2, color);
 }
 
+// Palet warna semua objek
 const COLOR = {
   paper:     "#f7f6f3",
   sky:       "#b0e6fa",
@@ -230,10 +239,12 @@ const COLOR = {
   ink:       "#1a1a1a",
 };
 
+// Langit (warna berganti saat malam)
 function drawSky() {
   drawRect(7.5, 6, 585, 159, isNight ? COLOR.skyNight : COLOR.sky);
 }
 
+// Tanah / sawah di bawah garis gunung
 function drawGround() {
   drawRect(7.5, 165, 585, 222.75, COLOR.grass);
 }
@@ -317,6 +328,7 @@ function drawBirds(seconds) {
   }
 }
 
+// Dua gunung dari segitiga statis
 function drawMountains() {
   drawShape(staticShapes.mountainLeft, Mat3.identity(), COLOR.mountain);
   drawShape(staticShapes.mountainRight, Mat3.identity(), COLOR.mountain);
@@ -440,10 +452,12 @@ window.addEventListener("keyup", (event) => {
   keys[event.key.toLowerCase()] = false;
 });
 
+// Membatasi value di rentang [min, max]
 function clamp(value, min, max) {
   return Math.max(min, Math.min(max, value));
 }
 
+// Membaca tombol panah setiap frame (burung bergerak, matahari di-scale)
 function handleInput(dt) {
   if (keys["arrowleft"])  birdOffsetX -= birdSpeed * dt;
   if (keys["arrowright"]) birdOffsetX += birdSpeed * dt;
